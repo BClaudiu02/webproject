@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Chatbot</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
 <div class="chat-container">
-    <div class="chat-box" id="chat-box"></div>
-    <input type="text" class="chat-input" id="user-input" placeholder="Type your message...">
-    <button class="send-btn" onclick="sendMessage()">Send</button>
+  <div id="chat-box" class="chat-box">
+    <div *ngFor="let message of chatMessages" [ngClass]="{'user-msg': message.isUser, 'bot-msg': !message.isUser}">
+      {{ message.text }}
+    </div>
+  </div>
+  <input type="text" id="user-input" [(ngModel)]="userInput" (keyup.enter)="sendMessage()" placeholder="Type your message here...">
+  <button (click)="sendMessage()">Send</button>
 </div>
 
-<script src="script.js"></script>
+
+<script src="chatbot.component.ts"></script>
 
 </body>
 </html>
