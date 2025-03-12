@@ -134,7 +134,7 @@ export class ChatbotComponent {
       return keywordResponse.keywords.every(keyword => {
         // Check if the keyword is present in the user input, ignoring any question marks next to it
         return keywords.some(userKeyword => {
-          const cleanedKeyword = userKeyword.replace(/\?$/, ""); // Remove question mark if it's at the end
+          const cleanedKeyword = userKeyword.replace(/[,.!?\s]+$/, ""); // Remove question mark if it's at the end
           return cleanedKeyword === keyword;
         });
       });
