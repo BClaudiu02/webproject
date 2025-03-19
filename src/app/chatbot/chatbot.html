@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chatbot</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-
-<div class="chat-container">
-  <div id="chat-box" class="chat-box">
-    <div *ngFor="let message of chatMessages" [ngClass]="{'user-msg': message.isUser, 'bot-msg': !message.isUser}">
+<div class="chatbot-container">
+  <div class="chat-messages">
+    <div *ngFor="let message of messages" class="message" [ngClass]="{'user-message': message.isUser, 'bot-message': !message.isUser}">
       {{ message.text }}
     </div>
+    <div *ngIf="isLoading" class="loading-message">
+      <div class="spinner"></div>
+      Thinking...
+    </div>
   </div>
-  <input type="text" id="user-input" [(ngModel)]="userInput" (keyup.enter)="sendMessage()" placeholder="Type your message here...">
-  <button (click)="sendMessage()">Send</button>
+
+  <div class="input-area">
+    <input type="text" [(ngModel)]="userInput" placeholder="Type your message..." (keyup.enter)="sendMessage()">
+    <button (click)="sendMessage()" [disabled]="isLoading">Send</button>
+  </div>
 </div>
-
-
-<script src="chatbot.component.ts"></script>
-
-</body>
-</html>
