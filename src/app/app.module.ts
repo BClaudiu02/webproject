@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { firebaseConfig } from './config';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { firebaseConfig } from './config';
         HomeComponent,
         SignupComponent,
         LoginComponent,
-        DashboardComponent
+        DashboardComponent,
+        UserProfileComponent
     ],
     imports: [
         BrowserModule,

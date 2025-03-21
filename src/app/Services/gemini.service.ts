@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class GeminiService {
 
-  private readonly apiUrl = 'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent';
+  private readonly apiUrl = 'https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent';
 
   constructor(private http: HttpClient) { }
 

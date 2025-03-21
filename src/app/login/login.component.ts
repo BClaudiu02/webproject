@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router';
 import { AuthService } from '../Services/auth.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -32,7 +31,7 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.invalid)
             return;
 
-        this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password).then((result) => {
+        this.authService.loginUser(this.loginForm.value).then((result) => { // Pass the entire form value
             if (result == null) {                               
                 console.log('logging in...');
                 this.router.navigate(['/dashboard']);                

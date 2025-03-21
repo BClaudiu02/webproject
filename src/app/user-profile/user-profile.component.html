@@ -1,0 +1,35 @@
+<div class="profile-container">
+  <h2 *ngIf="user">User Profile</h2>
+  <div *ngIf="firebaseErrorMessage" class="error-message">{{ firebaseErrorMessage }}</div>
+
+  <div *ngIf="user && !isEditing">
+    <p><strong>Display Name:</strong> {{ user.displayName }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <!-- You cannot directly display the password here -->
+    <button (click)="enableEdit()">Edit Profile</button>
+    <button (click)="showDeleteConfirmation()">Delete Account</button>
+  </div>
+
+  <div *ngIf="user && isEditing">
+    <h3>Edit Profile</h3>
+    <form [formGroup]="editForm" (ngSubmit)="saveChanges()">
+      <div>
+        <label for="displayName">Display Name:</label>
+        <input type="text" id="displayName" formControlName="displayName">
+      </div>
+      <button type="submit" [disabled]="editForm.invalid">Save Changes</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </form>
+  </div>
+
+  <!-- Delete Account Confirmation -->
+  <div *ngIf="deleteConfirmationVisible" class="confirmation-dialog">
+    <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+    <button (click)="confirmDelete()">Confirm Delete</button>
+    <button (click)="cancelDelete()">Cancel</button>
+  </div>
+
+  <div *ngIf="!user">
+    <p>Loading user profile...</p>
+  </div>
+</div>
