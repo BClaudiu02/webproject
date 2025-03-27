@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GeminiService } from '../Services/gemini.service';
+import { GeminiService } from '../services/gemini.service';
 
 @Component({
   selector: 'app-chatbot',
