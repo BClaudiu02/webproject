@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../Services/auth.service'; // Adjust path
+import { AuthService } from '../Services/auth.service'; 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
 
-  user: any | null = null; // Firebase user object (has displayName, email, etc.)
+  user: any | null = null; 
   editForm: FormGroup;
   isEditing = false;
   deleteConfirmationVisible = false;
-  firebaseErrorMessage: string = '';  // For displaying Firebase errors
+  firebaseErrorMessage: string = ''; 
 
   constructor(
     private authService: AuthService,
@@ -22,9 +22,7 @@ export class UserProfileComponent implements OnInit {
     private router: Router
   ) {
     this.editForm = this.fb.group({
-      displayName: ['', Validators.required] // Only allow editing the display name
-      // You can't directly edit the email through this method (Firebase restriction).
-      // Password changes require a different flow (see notes below)
+      displayName: ['', Validators.required]
     });
   }
 
@@ -36,9 +34,9 @@ export class UserProfileComponent implements OnInit {
     this.authService.getCurrentUser().then(user => {
       this.user = user;
       if (user) {
-        this.editForm.patchValue({ displayName: user.displayName }); // Populate form
+        this.editForm.patchValue({ displayName: user.displayName });
       } else {
-        this.router.navigate(['/login']); // Redirect if not logged in
+        this.router.navigate(['/login']); 
       }
     });
   }
@@ -50,7 +48,7 @@ export class UserProfileComponent implements OnInit {
   cancelEdit(): void {
     this.isEditing = false;
     if (this.user) {
-        this.editForm.patchValue({ displayName: this.user.displayName }); // Reset
+        this.editForm.patchValue({ displayName: this.user.displayName }); 
     }
 
   }
@@ -60,8 +58,8 @@ export class UserProfileComponent implements OnInit {
       const newDisplayName = this.editForm.value.displayName;
       this.authService.updateUserProfile(newDisplayName).then(() => {
           this.isEditing = false;
-          this.user.displayName = newDisplayName; // Update the displayed name
-          this.firebaseErrorMessage = '';  // Clear any previous errors
+          this.user.displayName = newDisplayName; 
+          this.firebaseErrorMessage = '';  
       }).catch(error => {
           this.firebaseErrorMessage = error.message;
           console.error("Error updating user profile:", error);
@@ -79,8 +77,8 @@ export class UserProfileComponent implements OnInit {
 
   confirmDelete(): void {
     this.authService.deleteUserAccount().then(() => {
-      this.authService.logout(); // Log out after successful deletion
-      this.router.navigate(['/']); // Redirect
+      this.authService.logout(); 
+      this.router.navigate(['/']); 
     }).catch(error => {
       this.firebaseErrorMessage = error.message;
       console.error("Error deleting user account:", error);
