@@ -57,12 +57,16 @@ export class UserProfileComponent implements OnInit {
     if (this.editForm.valid && this.user) {
       const newDisplayName = this.editForm.value.displayName;
       this.authService.updateUserProfile(newDisplayName).then(() => {
-          this.isEditing = false;
-          this.user.displayName = newDisplayName; 
-          this.firebaseErrorMessage = '';  
+        this.isEditing = false;
+        this.firebaseErrorMessage = '';  
+        
+        this.authService.getCurrentUser().then(updatedUser => {
+          this.user = updatedUser; 
+        });
+  
       }).catch(error => {
-          this.firebaseErrorMessage = error.message;
-          console.error("Error updating user profile:", error);
+        this.firebaseErrorMessage = error.message;
+        console.error("Error updating user profile:", error);
       });
     }
   }
