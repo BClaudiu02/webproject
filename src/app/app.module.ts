@@ -20,6 +20,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { firebaseConfig } from './config';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FitnessTrackerComponent } from './fitness-tracker/fitness-tracker.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
         SignupComponent,
         LoginComponent,
         DashboardComponent,
-        UserProfileComponent
+        UserProfileComponent,
+        FitnessTrackerComponent
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,55 @@
+<div class="fitness-tracker">
+  <h2>Fitness Tracker</h2>
+
+  <label for="weight">Your Weight (kg):</label>
+  <input type="number" id="weight" [(ngModel)]="weight" />
+
+  <label for="height">Your Height (cm):</label>
+  <input type="number" id="height" [(ngModel)]="height" />
+
+  <label for="age">Your Age:</label>
+  <input type="number" id="age" [(ngModel)]="age" />
+
+  <label for="gender">Gender:</label>
+  <select id="gender" [(ngModel)]="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+
+  <label for="exercise">Exercise:</label>
+  <select id="exercise" [(ngModel)]="exercise">
+    <option value="running_5mph">Running (5 mph)</option>
+    <option value="cycling_moderate">Cycling (Moderate)</option>
+    <option value="swimming_moderate">Swimming (Moderate)</option>
+    <option value="walking_moderate">Walking (Moderate)</option>
+    <option value="hiking">Hiking</option>
+    <option value="yoga">Yoga</option>
+    <option value="strength_training">Strength Training</option>
+    <option value="weightlifting">Weightlifting</option>
+    <option value="crunches">Crunches</option>
+    <option value="pushups">Push-ups</option>
+    <option value="squats">Squats</option>
+    <option value="jump_rope_fast">Jump Rope (Fast)</option>
+  </select>
+
+  <label for="duration">Duration (minutes):</label>
+  <input type="number" id="duration" [(ngModel)]="duration" />
+
+  <button (click)="calculateCalories()">Calculate Calories</button>
+
+  <p *ngIf="caloriesBurned">Calories Burned: {{ caloriesBurned | number: '1.0-2' }} kcal</p>
+
+  <button (click)="saveActivity()" [disabled]="!caloriesBurned">Save Activity</button>
+
+  <h3>Activity History</h3>
+  <button (click)="clearHistory()" [disabled]="activities.length === 0">Clear History</button>
+
+  <ul>
+    <li *ngFor="let activity of activities">
+      <strong>{{ activity.exercise }}</strong> - 
+      {{ activity.durationMinutes }} min - 
+      {{ activity.caloriesBurned | number: '1.0-2' }} kcal - 
+      {{ activity.date | date: 'short' }}
+    </li>
+  </ul>
+</div>

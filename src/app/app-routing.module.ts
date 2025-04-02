@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { AuthGuard } from './services/auth.guard';
+import { FitnessTrackerComponent } from './fitness-tracker/fitness-tracker.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'profile', component: UserProfileComponent },
+    { path: 'fitness-tracker', component: FitnessTrackerComponent },
     { path: '**', component: HomeComponent },
 ];
 
