@@ -1,3 +1,19 @@
+<button mat-raised-button color="primary" routerLink="/home">
+  Home
+</button>
+
+<button mat-raised-button color="primary" routerLink="/dashboard">
+Dashboard
+</button>
+
+<button mat-raised-button color="primary" routerLink="/profile">  
+My Profile
+</button>
+
+<button mat-raised-button color="primary" routerLink="/fitness-tracker">  
+Fitness-Tracker
+</button>
+
 <div class="chatbot-container">
   <div class="chat-messages">
     <div *ngFor="let message of messages" class="message" [ngClass]="{'user-message': message.isUser, 'bot-message': !message.isUser}">
