@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.invalid)
             return;
 
-        this.authService.loginUser(this.loginForm.value).then((result) => { // Pass the entire form value
+        this.authService.loginUser(this.loginForm.value).then((result) => { 
             if (result == null) {                               
                 console.log('logging in...');
                 this.router.navigate(['/dashboard']);                

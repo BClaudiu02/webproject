@@ -13,13 +13,13 @@ import { FitnessTrackerComponent } from './fitness-tracker/fitness-tracker.compo
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'chatbot', component: ChatbotComponent},
+    { path: 'chatbot', component: ChatbotComponent, canActivate: [AuthGuard]},
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-    { path: 'profile', component: UserProfileComponent },
-    { path: 'fitness-tracker', component: FitnessTrackerComponent },
+    { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
+    { path: 'fitness-tracker', component: FitnessTrackerComponent, canActivate: [AuthGuard] },
     { path: '**', component: HomeComponent },
 ];
 

@@ -1,36 +1,22 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Observable } from 'rxjs';
+import { CanActivateFn } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
-    constructor(private router: Router, private afAuth: AngularFireAuth) {
+export const AuthGuard: CanActivateFn = (): Observable<boolean> => {
+  const afAuth = inject(AngularFireAuth);  
+  const router = inject(Router);  
 
-    }
-
-    canActivate(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-        return new Promise((resolve, reject) => {
-            this.afAuth.onAuthStateChanged((user) => {
-                if (user) {
-
-                    // if (!user.emailVerified)                            // if the user hasn't verified their email, send them to that page
-                    //     this.router.navigate(['/verify-email']);
-
-                    resolve(true);
-                } else {
-                    console.log('Auth Guard: user is not logged in');
-                    this.router.navigate(['/home']);                   // a logged out user will always be sent to home
-                    resolve(false);
-                }
-            });
-        });
-    }
-  
-}
+  return new Observable<boolean>((observer) => {
+    afAuth.onAuthStateChanged((user) => {
+      if (user) {
+        observer.next(true);
+      } else {
+        console.log('Auth Guard: user is not logged in');
+        router.navigate(['/home']);  
+        observer.next(false);
+      }
+    });
+  });
+};

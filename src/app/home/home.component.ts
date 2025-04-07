@@ -16,6 +16,6 @@ export class HomeComponent implements OnInit {
 
     logout(): void {
         this.afAuth.signOut();
-    }
+    } 
 
 }
