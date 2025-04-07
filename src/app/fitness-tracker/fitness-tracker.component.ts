@@ -10,9 +10,9 @@ import { Activity } from '../models/activity.model';
 export class FitnessTrackerComponent {
   exercise: string = '';
   duration: number = 0;
-  weight: number = 70; 
-  height: number = 170; 
-  age: number = 25; 
+  weight: number = 94; 
+  height: number = 175; 
+  age: number = 22; 
   gender: string = 'male'; 
   caloriesBurned: number = 0;
   activities: Activity[] = [];
