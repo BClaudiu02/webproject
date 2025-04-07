@@ -12,7 +12,6 @@
   <div *ngIf="user && !isEditing">
     <p><strong>Display Name:</strong> {{ user.displayName }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
-    <!-- You cannot directly display the password here -->
     <button (click)="enableEdit()">Edit Profile</button>
     <button (click)="showDeleteConfirmation()">Delete Account</button>
   </div>
@@ -29,7 +28,6 @@
     </form>
   </div>
 
-  <!-- Delete Account Confirmation -->
   <div *ngIf="deleteConfirmationVisible" class="confirmation-dialog">
     <p>Are you sure you want to delete your account? This action cannot be undone.</p>
     <button (click)="confirmDelete()">Confirm Delete</button>
