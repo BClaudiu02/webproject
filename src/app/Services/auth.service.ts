@@ -18,10 +18,9 @@ export class AuthService {
       this.afAuth.createUserWithEmailAndPassword(value.email, value.password)
         .then(
           res => {
-            // Update display name
             res.user?.updateProfile({ displayName: value.displayName })
               .then(() => {
-                resolve(null); // Success
+                resolve(null); 
               })
               .catch((error) => {
                 this.firebaseErrorMessage = error.message;
@@ -53,7 +52,7 @@ export class AuthService {
 
   logout() {
     this.afAuth.signOut().then(() => {
-      this.router.navigate(['/login']); // Redirect to login page after logout
+      this.router.navigate(['/login']); 
     });
   }
 
@@ -68,7 +67,7 @@ export class AuthService {
   getCurrentUser(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.afAuth.authState.subscribe(user => {
-        resolve(user); // Return the Firebase user object
+        resolve(user); 
       }, reject);
     });
   }
