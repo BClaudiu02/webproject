@@ -1,57 +1,92 @@
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  padding: 20px 16px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .profile-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .profile-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-container p {
-    margin-bottom: 10px;
-  }
-  
-  .profile-container button {
-    padding: 8px 12px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  .profile-container button:hover {
-    background-color: #3e8e41;
-  }
-  
-  .profile-container form div {
-    margin-bottom: 10px;
-  }
-  
-  .profile-container form label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .profile-container form input[type="text"],
-  .profile-container form input[type="email"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  /* Delete Confirmation Dialog */
-  .confirmation-dialog {
-    border: 1px solid red;
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 5px;
-  }
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.profile-container h2,
+.profile-container h3 {
+  text-align: center;
+  color: #1976d2;
+  margin-bottom: 20px;
+}
+
+.profile-container p {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #333;
+}
+
+.profile-container form div {
+  margin-bottom: 16px;
+}
+
+.profile-container form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.profile-container form input[type="text"],
+.profile-container form input[type="email"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.profile-container button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.profile-container button:hover {
+  background-color: #145ea8;
+}
+
+.profile-container button:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: #fdecea;
+  border-left: 4px solid #f44336;
+  color: #a94442;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.confirmation-dialog {
+  background-color: #fff3cd;
+  border: 1px solid #ffecb5;
+  color: #856404;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  text-align: center;
+}

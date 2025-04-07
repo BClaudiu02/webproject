@@ -1,38 +1,69 @@
-.container {
-    background-color: rgb(93, 205, 242);
-  }
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  padding: 20px 16px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-.card {
-    width: 100%;
-    height: 100%;
-    border: 1px solid #ccc;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-  }
-  
-  .card-img-top {
-    width: 500px;
-    height: 250px;
-    object-fit: cover;
-  }
-  
-  .card-title {
-    font-weight: bold;
-    font-size: 1.25rem;
-  }
-  
-  .links {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .links a {
-    margin-right: 10px;
-    font-size: 1.25rem;
-    color: #007bff;
-  }
-  
-  .links a:hover {
-    text-decoration: underline;
-  }
+.section-title {
+  text-align: center;
+  margin: 30px 0 20px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.news-section {
+  padding: 0 16px 40px;
+}
+
+.news-card {
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.news-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 300px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.card-text {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.btn-outline-primary {
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1976d2;
+  color: white;
+  border-color: #1976d2;
+}
