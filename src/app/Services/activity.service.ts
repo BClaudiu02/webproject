@@ -67,7 +67,6 @@ export class ActivityService {
 
     const met = MET_VALUES[exercise.toLowerCase().replace(/\s+/g, '_')] || 5.0;
 
-    // Harris-Benedict Equation for BMR
     let BMR: number;
     if (gender === 'male') {
       BMR = 10 * weight + 6.25 * height - 5 * age + 5;
@@ -75,7 +74,6 @@ export class ActivityService {
       BMR = 10 * weight + 6.25 * height - 5 * age - 161;
     }
 
-    // Total calorie burn calculation
     const caloriesBurned = (met * weight * duration) / 60;
 
     return caloriesBurned;
