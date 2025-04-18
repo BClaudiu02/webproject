@@ -12,7 +12,7 @@
   <div *ngIf="user && !isEditing && userProfile">
     <p><strong>Display Name:</strong> {{ userProfile.displayName }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>Gender:</strong> {{ userProfile.gender === 'masculine' ? 'Masculine' : userProfile.gender === 'feminine' ? 'Feminine' : 'Prefer not to say' }}</p>
+    <p><strong>Gender:</strong> {{ userProfile.gender === 'masculin' ? 'Masculine' : userProfile.gender === 'feminin' ? 'Feminine' : 'Prefer not to say' }}</p>
     <p><strong>Birthdate:</strong> {{ userProfile.birthDate | date:'dd/MM/yyyy' }}</p>
     <p><strong>Weight:</strong> {{ userProfile.weight }} kg</p>
     <p><strong>Height:</strong> {{ userProfile.height }} cm</p>
@@ -31,8 +31,8 @@
         <label for="gender">Gender:</label>
         <select id="gender" formControlName="gender">
           <option value="">Select</option>
-          <option value="masculin">Masculine</option>
-          <option value="feminin">Feminine</option>
+          <option value="masculin">masculine</option>
+          <option value="feminin">feminine</option>
           <option value="prefer_not_to_say">Prefer not to say</option>
         </select>
       </div>
