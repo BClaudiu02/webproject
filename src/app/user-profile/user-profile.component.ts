@@ -42,7 +42,6 @@ export class UserProfileComponent implements OnInit {
       if (user) {
          this.authService.getUserProfile(user.uid).then(profile => {
           this.userProfile = profile;
-          console.log("User Profile Data:", this.userProfile);
           this.editForm.patchValue({
             displayName: user.displayName,
             gender: profile?.gender || '',  
@@ -83,6 +82,7 @@ export class UserProfileComponent implements OnInit {
       this.authService.updateUserProfile(formData.displayName)
         .then(() => {
           return this.authService.updateUserProfileData(this.user.uid, {
+            displayName: formData.displayName,
             gender: formData.gender,
             birthDate: formData.birthDate,
             weight: formData.weight,
