@@ -42,7 +42,7 @@ export class UserProfileComponent implements OnInit {
       if (user) {
          this.authService.getUserProfile(user.uid).then(profile => {
           this.userProfile = profile;
-
+          console.log("User Profile Data:", this.userProfile);
           this.editForm.patchValue({
             displayName: user.displayName,
             gender: profile?.gender || '',  
