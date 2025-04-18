@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -40,6 +41,7 @@ import { FitnessTrackerComponent } from './fitness-tracker/fitness-tracker.compo
         BrowserAnimationsModule,
 
         AngularFireModule.initializeApp(firebaseConfig.firebase),
+        AngularFirestoreModule,
 
         MatButtonModule,
         MatCardModule,
