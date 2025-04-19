@@ -2,7 +2,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
         <p>
             <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
+                <mat-label>E-mail</mat-label>
                 <input autocomplete="off" formControlName="email" type="email" matInput placeholder="Email">
             </mat-form-field>
         </p>
@@ -16,6 +16,8 @@
             <span>{{ firebaseErrorMessage }}</span>
         </div>
 
-        <button mat-raised-button color="primary">Login</button>
+        <div class="button-wrapper">
+            <button mat-raised-button color="primary">Log in</button>
+        </div>
     </form>
 </mat-card>

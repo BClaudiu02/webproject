@@ -11,7 +11,7 @@
 
   <div *ngIf="user && !isEditing && userProfile">
     <p><strong>Display Name:</strong> {{ userProfile.displayName }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>E-mail:</strong> {{ user.email }}</p>
     <p><strong>Gender:</strong> {{ userProfile.gender === 'masculin' ? 'Masculine' : userProfile.gender === 'feminin' ? 'Feminine' : 'Prefer not to say' }}</p>
     <p><strong>Birthdate:</strong> {{ userProfile.birthDate | date:'dd/MM/yyyy' }}</p>
     <p><strong>Weight:</strong> {{ userProfile.weight }} kg</p>

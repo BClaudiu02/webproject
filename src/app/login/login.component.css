@@ -4,3 +4,9 @@
     align-items: center;
     margin-top: 45px;
   }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
