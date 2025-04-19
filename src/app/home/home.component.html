@@ -1,6 +1,7 @@
 <div class="nav-buttons">
 <button mat-raised-button color="primary" routerLink="/signup" *ngIf="!(afAuth.user | async)">Sign up</button>
 <button mat-raised-button color="primary" routerLink="/login" *ngIf="!(afAuth.user | async)">Log in</button>
+<button mat-raised-button color="primary" (click)="logout()" *ngIf="afAuth.user | async">Log out</button>
 <button mat-raised-button color="primary" routerLink="/dashboard" *ngIf="afAuth.user | async">News</button>
 <button mat-raised-button color="primary" routerLink="/chatbot" *ngIf="afAuth.user | async">Chatbot</button>
 <button mat-raised-button color="primary" routerLink="/profile" *ngIf="afAuth.user | async">My Profile</button>
@@ -9,11 +10,6 @@
 
 <div *ngIf="(afAuth.user | async)">
     User is logged in
-
-    <br>
-    <button mat-raised-button color="primary" (click)="logout()">
-        Log out
-    </button>
 </div>
 <div *ngIf="!(afAuth.user | async)">
     User is not logged in
