@@ -11,7 +11,7 @@
       <div *ngFor="let message of messages" 
            class="message" 
            [ngClass]="{'user-message': message.isUser, 'bot-message': !message.isUser}">
-        {{ message.text }}
+           <span [innerHTML]="message.text"></span>
       </div>
 
       <div *ngIf="isLoading" class="loading-message">
