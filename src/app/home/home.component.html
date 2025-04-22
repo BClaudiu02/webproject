@@ -8,10 +8,7 @@
 <button mat-raised-button color="primary" routerLink="/fitness-tracker" *ngIf="afAuth.user | async">Fitness-Tracker</button>
 </div>
 
-<div *ngIf="(afAuth.user | async)">
-    User is logged in
-</div>
-<div *ngIf="!(afAuth.user | async)">
-    User is not logged in
+<div class="quote-container">
+    <p class="motivational-quote">"{{ currentQuote }}"</p>
 </div>
 
