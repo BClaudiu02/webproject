@@ -1,17 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';  // Import AngularFirestore
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';  
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import firebase from 'firebase/compat/app';
 
 interface User {
-  uid: string;
-  email: string;
   displayName?: string;
-  photoURL?: string;
-  emailVerified: boolean;
 }
 
 @Injectable({
@@ -110,11 +106,7 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<User> = this.firestore.doc(`users/${user.uid}`);
 
     const data: User = {
-      uid: user.uid,
-      email: user.email || '',
       displayName: user.displayName || '',
-      photoURL: user.photoURL || '',
-      emailVerified: user.emailVerified,
     };
 
     return userRef.set(data, { merge: true });
