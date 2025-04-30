@@ -7,31 +7,40 @@
 
 <h2 class="section-title">CLUJ NEWS</h2>
 
+<div class="filter-controls">
+  <div>
+    <label for="location">Location:</label>
+    <select id="location" [(ngModel)]="selectedLocation">
+      <option value="">All Locations</option>
+      <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="sport">Sport:</label>
+    <select id="sport" [(ngModel)]="selectedSport">
+      <option value="">All Sports</option>
+      <option *ngFor="let sport of sports" [value]="sport">{{ sport }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="amateur">Amateur Competitions:</label>
+    <input type="checkbox" id="amateur" [(ngModel)]="showAmateurCompetitions">
+  </div>
+
+    <button mat-raised-button color="accent" (click)="resetFilters()">Clear filters</button>
+</div>
+
 <div class="container news-section">
   <div class="row justify-content-center">
-    <div class="col-lg-5 col-md-6 col-sm-10 mb-4">
+    <div class="col-lg-5 col-md-6 col-sm-10 mb-4" *ngFor="let article of filterArticles()">
       <div class="card news-card">
-        <img src="https://ubt.s3.eu-west-3.amazonaws.com/media/images/2022/04/ciuXoP9jlbXMxniEezlkNscaCckJkNZ8zhQrIO4N.jpeg" alt="UBT vs JL Bourg" class="card-img-top">
+        <img [src]="article.imageUrl" alt="{{ article.title }}" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title">UBT pierde partida cu JL Bourg</h5>
-          <p class="card-text">
-            U-BT Cluj-Napoca a primit marți, 19 decembrie, vizita lui JL Bourg, iar formația franceză a obținut a patra victorie în fața campioanei României.
-          </p>
-          <p class="card-text">
-            Elevii lui Frederic Fathoux au jucat excelent, având un procentaj de 60% de la distanță, și au oprit la timp revenirea gazdelor, câștigând cu 98 la 89.
-          </p>
-          <a href="https://baschet.ro/liga-nationala-de-baschet-masculin/stiri/mihai-silvasan-noi-le-am-hranit-aceasta-forma-buna-pe-care-au-avut-o" target="_blank" class="btn btn-outline-primary">Read More</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-5 col-md-6 col-sm-10 mb-4">
-      <div class="card news-card">
-        <img src="https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg)/origin-imgresizer.eurosport.com/2022/04/26/3362425-68728768-2560-1440.jpg" alt="Derby cu CFR" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">U Cluj este pregătită pentru derby-ul cu CFR din această seară</h5>
-          <p class="card-text">Partida va avea loc la ora 19:45 pe stadionul Dr. Constantin Rădulescu.</p>
-        </div>
+          <h5 class="card-title">{{ article.title }}</h5>
+          <p class="card-text">{{ article.contentSnippet }}</p>
+          <a [href]="article.link" target="_blank" class="btn btn-outline-primary">Read More</a>        </div>
       </div>
     </div>
   </div>
