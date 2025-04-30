@@ -5,7 +5,7 @@
   <button mat-raised-button color="primary" routerLink="/fitness-tracker">Fitness-Tracker</button>
 </div>
 
-<h2 class="section-title">CLUJ NEWS</h2>
+<h2 class="section-title">NEWS</h2>
 
 <div class="filter-controls">
   <div>
@@ -29,7 +29,7 @@
     <input type="checkbox" id="amateur" [(ngModel)]="showAmateurCompetitions">
   </div>
 
-    <button mat-raised-button color="accent" (click)="resetFilters()">Clear filters</button>
+  <button mat-raised-button color="accent" (click)="resetFilters()">Clear filters</button>
 </div>
 
 <div class="container news-section">
@@ -40,7 +40,8 @@
         <div class="card-body">
           <h5 class="card-title">{{ article.title }}</h5>
           <p class="card-text">{{ article.contentSnippet }}</p>
-          <a [href]="article.link" target="_blank" class="btn btn-outline-primary">Read More</a>        </div>
+          <a [href]="article.link" target="_blank" class="btn btn-outline-primary">Read More</a>
+        </div>
       </div>
     </div>
   </div>

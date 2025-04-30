@@ -44,9 +44,9 @@ export class DashboardComponent implements OnInit {
   }
 
   resetFilters(): void {
-      this.selectedLocation = '';
-      this.selectedSport = '';
-      this.showAmateurCompetitions = false;
+    this.selectedLocation = '';
+    this.selectedSport = '';
+    this.showAmateurCompetitions = false;
   }
 
 }
