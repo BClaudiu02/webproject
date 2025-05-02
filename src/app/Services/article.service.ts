@@ -23,11 +23,11 @@ export class ArticleService {
       imageUrl: 'https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg)/origin-imgresizer.eurosport.com/2022/04/26/3362425-68728768-2560-1440.jpg',
       contentSnippet: 'Partida va avea loc la ora 19:45 pe stadionul Dr. Constantin Rădulescu.',
       link: '#',
-      location: 'Cluj',
+      location: 'Sibiu',
       sport: 'Football',
       isAmateurCompetition: false
     },
-    
+
   ];
 
   getArticles(): Article[] {
@@ -35,10 +35,10 @@ export class ArticleService {
   }
 
   getLocations(): string[] {
-    return [...new Set(this.articles.map(article => article.location))]; 
+    return [...new Set(this.articles.map(article => article.location))];
   }
 
   getSports(): string[] {
-    return [...new Set(this.articles.map(article => article.sport))]; 
+    return [...new Set(this.articles.map(article => article.sport))];
   }
 }

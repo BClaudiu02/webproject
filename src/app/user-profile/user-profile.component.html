@@ -1,8 +1,8 @@
 <div class="nav-buttons">
-<button mat-raised-button color="primary" routerLink="/home">Home</button>
-<button mat-raised-button color="primary" routerLink="/chatbot">Chatbot</button>
-<button mat-raised-button color="primary" routerLink="/dashboard">News</button>
-<button mat-raised-button color="primary" routerLink="/fitness-tracker">Fitness-Tracker</button>
+  <button mat-raised-button color="primary" routerLink="/home">Home</button>
+  <button mat-raised-button color="primary" routerLink="/chatbot">Chatbot</button>
+  <button mat-raised-button color="primary" routerLink="/dashboard">News</button>
+  <button mat-raised-button color="primary" routerLink="/fitness-tracker">Fitness-Tracker</button>
 </div>
 
 <div class="profile-container">
@@ -10,12 +10,15 @@
   <div *ngIf="firebaseErrorMessage" class="error-message">{{ firebaseErrorMessage }}</div>
 
   <div *ngIf="user && !isEditing && userProfile">
-    <p><strong>Display Name:</strong> {{ userProfile.displayName }}</p>
+    <p *ngIf="userProfile.displayName"><strong>Display Name:</strong> {{ userProfile.displayName }}</p>
     <p><strong>E-mail:</strong> {{ user.email }}</p>
-    <p><strong>Gender:</strong> {{ userProfile.gender === 'masculin' ? 'Masculine' : userProfile.gender === 'feminin' ? 'Feminine' : 'Prefer not to say' }}</p>
-    <p><strong>Birthdate:</strong> {{ userProfile.birthDate | date:'dd/MM/yyyy' }}</p>
-    <p><strong>Weight:</strong> {{ userProfile.weight }} kg</p>
-    <p><strong>Height:</strong> {{ userProfile.height }} cm</p>
+    <p *ngIf="userProfile.gender"><strong>Gender:</strong> {{ userProfile.gender === 'masculin' ? 'Masculine' :
+      userProfile.gender === 'feminin' ? 'Feminine' : 'Prefer not to say' }}</p>
+    <p *ngIf="userProfile.birthDate"><strong>Birthdate:</strong> {{ userProfile.birthDate | date:'dd/MM/yyyy' }}</p>
+    <p *ngIf="userProfile.weight !== null && userProfile.weight !== undefined"><strong>Weight:</strong> {{
+      userProfile.weight }} kg</p>
+    <p *ngIf="userProfile.height !== null && userProfile.height !== undefined"><strong>Height:</strong> {{
+      userProfile.height }} cm</p>
     <button (click)="enableEdit()">Edit Profile</button>
     <button (click)="showDeleteConfirmation()">Delete Account</button>
   </div>
@@ -36,17 +39,18 @@
           <option value="prefer_not_to_say">Prefer not to say</option>
         </select>
       </div>
-  
+
       <div>
         <label for="birthDate">Birthdate:</label>
-        <input type="date" id="birthDate" formControlName="birthDate" [attr.min]="'1925-01-01'" [attr.max]="'2015-12-31'">
+        <input type="date" id="birthDate" formControlName="birthDate" [attr.min]="'1925-01-01'"
+          [attr.max]="'2015-12-31'">
       </div>
-  
+
       <div>
         <label for="weight">Weight (kg):</label>
         <input type="number" id="weight" formControlName="weight">
       </div>
-  
+
       <div>
         <label for="height">Height (cm):</label>
         <input type="number" id="height" formControlName="height">

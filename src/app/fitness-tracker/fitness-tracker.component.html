@@ -1,8 +1,8 @@
 <div class="nav-buttons">
-<button mat-raised-button color="primary" routerLink="/home">Home</button>
-<button mat-raised-button color="primary" routerLink="/chatbot">Chatbot</button>
-<button mat-raised-button color="primary" routerLink="/profile">My Profile</button>
-<button mat-raised-button color="primary" routerLink="/dashboard">News</button>
+  <button mat-raised-button color="primary" routerLink="/home">Home</button>
+  <button mat-raised-button color="primary" routerLink="/chatbot">Chatbot</button>
+  <button mat-raised-button color="primary" routerLink="/profile">My Profile</button>
+  <button mat-raised-button color="primary" routerLink="/dashboard">News</button>
 </div>
 
 <div class="fitness-tracker">
@@ -25,18 +25,33 @@
 
   <label for="exercise">Exercise:</label>
   <select id="exercise" [(ngModel)]="exercise">
-    <option value="running_5mph">Running (5 mph)</option>
-    <option value="cycling_moderate">Cycling (Moderate)</option>
-    <option value="swimming_moderate">Swimming (Moderate)</option>
-    <option value="walking_moderate">Walking (Moderate)</option>
-    <option value="hiking">Hiking</option>
-    <option value="yoga">Yoga</option>
-    <option value="strength_training">Strength Training</option>
-    <option value="weightlifting">Weightlifting</option>
+    <option value="basketball">Basketball</option>
     <option value="crunches">Crunches</option>
+    <option value="cycling_leisurely">Cycling (Leisurely - 10-12 mph)</option>
+    <option value="cycling_moderate">Cycling (Moderate - 12-14 mph)</option>
+    <option value="cycling_vigorous">Cycling (Vigorous - 14-16 mph)</option>
+    <option value="dancing_general">Dancing (General)</option>
+    <option value="football">Football</option>
+    <option value="hiking_moderate">Hiking (Moderate Inclines)</option>
+    <option value="hiking_vigorous">Hiking (Steep Inclines)</option>
+    <option value="jump_rope_fast">Jump Rope</option>
+    <option value="pilates">Pilates</option>
     <option value="pushups">Push-ups</option>
+    <option value="running_8kph">Running (8 kph - Light Jog)</option>
+    <option value="running_12kph">Running (12 kph - Moderate)</option>
+    <option value="running_16kph">Running (16 kph - Fast)</option>
     <option value="squats">Squats</option>
-    <option value="jump_rope_fast">Jump Rope (Fast)</option>
+    <option value="strength_training">Strength Training</option>
+    <option value="strength_training_light">Strength Training (Light)</option>
+    <option value="strength_training_moderate">Strength Training (Moderate)</option>
+    <option value="swimming_leisurely">Swimming (Leisurely)</option>
+    <option value="swimming_moderate">Swimming (Moderate Pace)</option>
+    <option value="swimming_vigorous">Swimming (Vigorous)</option>
+    <option value="tennis">Tennis</option>
+    <option value="walking_3kph">Walking (3 kph - Slow Stroll)</option>
+    <option value="walking_5kph">Walking (5 kph - Moderate Pace)</option>
+    <option value="weightlifting">Weightlifting</option>
+    <option value="yoga">Yoga</option>
   </select>
 
   <label for="duration">Duration (minutes):</label>
@@ -48,15 +63,17 @@
 
   <button (click)="saveActivity()" [disabled]="!caloriesBurned">Save Activity</button>
 
-  <h3>Activity History</h3>
   <button (click)="clearHistory()" [disabled]="activities.length === 0">Clear History</button>
 
-  <ul>
-    <li *ngFor="let activity of activities">
-      <strong>{{ activity.exercise }}</strong> - 
-      {{ activity.durationMinutes }} min - 
-      {{ activity.caloriesBurned | number: '1.0-2' }} kcal - 
-      {{ activity.date | date: 'short' }}
-    </li>
-  </ul>
+  <div class="activity-history">
+    <h3>Activity History</h3>
+    <ul>
+      <li *ngFor="let activity of activities">
+        <strong>{{ activity.exercise }}</strong> -
+        {{ activity.durationMinutes }} min -
+        {{ activity.caloriesBurned | number: '1.0-2' }} kcal -
+        {{ activity.date | date: 'short' }}
+      </li>
+    </ul>
+  </div>
 </div>

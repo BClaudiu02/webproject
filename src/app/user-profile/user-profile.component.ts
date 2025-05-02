@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service'; 
+import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserProfile } from '../models/user.model';
@@ -12,11 +12,11 @@ import { UserProfile } from '../models/user.model';
 export class UserProfileComponent implements OnInit {
 
   user: any | null = null;
-  userProfile: UserProfile | null = null; 
+  userProfile: UserProfile | null = null;
   editForm: FormGroup;
   isEditing = false;
   deleteConfirmationVisible = false;
-  firebaseErrorMessage: string = ''; 
+  firebaseErrorMessage: string = '';
 
   constructor(
     private authService: AuthService,
@@ -24,12 +24,12 @@ export class UserProfileComponent implements OnInit {
     private router: Router
   ) {
     this.editForm = this.fb.group({
-      displayName: ['', Validators.required],
-      gender: ['', Validators.required],
-      birthDate: ['', Validators.required],
-      weight: [null, [Validators.required, Validators.min(30), Validators.max(300)]],
-      height: [null, [Validators.required, Validators.min(100), Validators.max(250)]]
-    });    
+      displayName: [''],
+      gender: [''],
+      birthDate: [''],
+      weight: [null],
+      height: [null]
+    });
   }
 
   ngOnInit(): void {
@@ -40,16 +40,16 @@ export class UserProfileComponent implements OnInit {
     this.authService.getCurrentUser().then(user => {
       this.user = user;
       if (user) {
-         this.authService.getUserProfile(user.uid).then(profile => {
+        this.authService.getUserProfile(user.uid).then(profile => {
           this.userProfile = profile;
           this.editForm.patchValue({
             displayName: user.displayName,
-            gender: profile?.gender || '',  
-            birthDate: profile?.birthDate, 
+            gender: profile?.gender || '',
+            birthDate: profile?.birthDate,
             weight: profile?.weight,
             height: profile?.height
           });
-         });
+        });
 
       } else {
         this.router.navigate(['/login']);
@@ -63,14 +63,14 @@ export class UserProfileComponent implements OnInit {
 
   cancelEdit(): void {
     this.isEditing = false;
-    if (this.userProfile) {  
-      this.editForm.patchValue({ 
-         displayName: this.user.displayName,
-         gender: this.userProfile.gender || '',
-         birthDate: this.userProfile.birthDate,
-         weight: this.userProfile.weight,
-         height: this.userProfile.height
-       });
+    if (this.userProfile) {
+      this.editForm.patchValue({
+        displayName: this.user.displayName,
+        gender: this.userProfile.gender || '',
+        birthDate: this.userProfile.birthDate,
+        weight: this.userProfile.weight,
+        height: this.userProfile.height
+      });
     }
 
   }
@@ -78,7 +78,7 @@ export class UserProfileComponent implements OnInit {
   saveChanges(): void {
     if (this.editForm.valid && this.user) {
       const formData = this.editForm.value;
-  
+
       this.authService.updateUserProfile(formData.displayName)
         .then(() => {
           return this.authService.updateUserProfileData(this.user.uid, {

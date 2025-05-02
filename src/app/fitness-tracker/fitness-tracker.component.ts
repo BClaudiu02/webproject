@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivityService } from '../services/activity.service';
 import { Activity } from '../models/activity.model';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-fitness-tracker',
@@ -10,16 +11,23 @@ import { Activity } from '../models/activity.model';
 export class FitnessTrackerComponent {
   exercise: string = '';
   duration: number = 0;
-  weight: number = 94; 
-  height: number = 175; 
-  age: number = 22; 
-  gender: string = 'male'; 
+  weight: number = 93;
+  height: number = 175;
+  age: number = 22;
+  gender: string = 'male';
   caloriesBurned: number = 0;
   activities: Activity[] = [];
 
-  constructor(private activityService: ActivityService) {
-    this.activityService.getActivities().subscribe((activities) => {
-      this.activities = activities;
+  constructor(private activityService: ActivityService, private afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        const userId = user.uid;
+        this.activityService.setUser(userId);
+
+        this.activityService.getActivities().subscribe((activities) => {
+          this.activities = activities;
+        });
+      }
     });
   }
 
@@ -39,8 +47,8 @@ export class FitnessTrackerComponent {
     if (!this.exercise || this.duration <= 0 || this.weight <= 0 || this.height <= 0 || this.age <= 0) return;
 
     const newActivity: Activity = {
-      userId: '12345', 
-      exercise: this.exercise,
+      userId: this.activityService['userId'],
+      exercise: this.activityService.getExerciseLabel(this.exercise),
       durationMinutes: this.duration,
       caloriesBurned: this.caloriesBurned,
       date: new Date(),
