@@ -76,8 +76,37 @@ export class ArticleService {
       location: '',
       sport: '',
       isAmateurCompetition: false
+    },
+    {
+      id: '',
+      title: '',
+      imageUrl: '',
+      contentSnippet: '',
+      link: '',
+      location: '',
+      sport: '',
+      isAmateurCompetition: false
+    },
+    {
+      id: '',
+      title: '',
+      imageUrl: '',
+      contentSnippet: '',
+      link: '',
+      location: '',
+      sport: '',
+      isAmateurCompetition: false
+    },
+    {
+      id: '',
+      title: '',
+      imageUrl: '',
+      contentSnippet: '',
+      link: '',
+      location: '',
+      sport: '',
+      isAmateurCompetition: false
     }
-
   ];
 
   getArticles(): Article[] {
