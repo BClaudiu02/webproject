@@ -3,6 +3,8 @@ import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserProfile } from '../models/user.model';
+import { WeightHistoryService } from '../services/weight-history.service';
+import { WeightPredictionService } from '../services/weight-prediction.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,11 +19,14 @@ export class UserProfileComponent implements OnInit {
   isEditing = false;
   deleteConfirmationVisible = false;
   firebaseErrorMessage: string = '';
+  predictedWeight: number | null = null;
 
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private weightHistoryService: WeightHistoryService,
+    private weightPredictionService: WeightPredictionService
   ) {
     this.editForm = this.fb.group({
       displayName: [''],
@@ -49,6 +54,10 @@ export class UserProfileComponent implements OnInit {
             weight: profile?.weight,
             height: profile?.height
           });
+          this.weightHistoryService.getWeightHistory(user.uid, 3).subscribe(history => {
+            const predictedWeight = this.weightPredictionService.predictWeight(history);
+            this.predictedWeight = predictedWeight;
+          })
         });
 
       } else {

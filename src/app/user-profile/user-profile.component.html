@@ -19,6 +19,9 @@
       userProfile.weight }} kg</p>
     <p *ngIf="userProfile.height !== null && userProfile.height !== undefined"><strong>Height:</strong> {{
       userProfile.height }} cm</p>
+    <div *ngIf="predictedWeight !== null">
+      <p><strong>Predicted Weight (1 month):</strong> {{ predictedWeight | number:'.2' }} kg</p>
+    </div>
     <button (click)="enableEdit()">Edit Profile</button>
     <button (click)="showDeleteConfirmation()">Delete Account</button>
   </div>
@@ -64,6 +67,10 @@
     <p>Are you sure you want to delete your account? This action cannot be undone.</p>
     <button (click)="confirmDelete()">Confirm Delete</button>
     <button (click)="cancelDelete()">Cancel</button>
+  </div>
+
+  <div *ngIf="predictedWeight !== null">
+    <p><strong>Predicted Weight (1 month):</strong> {{ predictedWeight | number:'.2' }} kg</p>
   </div>
 
   <div *ngIf="!user">

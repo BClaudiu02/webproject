@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';  
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import firebase from 'firebase/compat/app';
+import { UserProfile } from '../models/user.model';
+import { WeightEntry } from '../models/weight_entry.model';
 
 interface User {
   displayName?: string;
+  uid: string;
 }
 
 @Injectable({
@@ -42,7 +45,7 @@ export class AuthService {
             res.user?.updateProfile({ displayName: value.displayName })
               .then(() => {
                 this.createUserDocument(res.user)
-                  .then(() => resolve(null))  
+                  .then(() => resolve(null))
                   .catch(error => {
                     this.firebaseErrorMessage = error.message;
                     resolve({ isValid: false, message: error.message });
@@ -107,6 +110,7 @@ export class AuthService {
 
     const data: User = {
       displayName: user.displayName || '',
+      uid: user.uid
     };
 
     return userRef.set(data, { merge: true });
@@ -147,6 +151,10 @@ export class AuthService {
   }
 
   updateUserProfileData(uid: string, data: any): Promise<void> {
+    const weightEntry: WeightEntry = {
+      date: new Date(), 
+      weight: data.weight 
+    };
     return this.firestore.collection('users').doc(uid).set(data, { merge: true });
   }
 
