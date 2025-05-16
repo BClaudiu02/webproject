@@ -19,7 +19,6 @@ export class UserProfileComponent implements OnInit {
   isEditing = false;
   deleteConfirmationVisible = false;
   firebaseErrorMessage: string = '';
-  predictedWeight: number | null = null;
 
   constructor(
     private authService: AuthService,
@@ -54,10 +53,6 @@ export class UserProfileComponent implements OnInit {
             weight: profile?.weight,
             height: profile?.height
           });
-          this.weightHistoryService.getWeightHistory(user.uid, 3).subscribe(history => {
-            const predictedWeight = this.weightPredictionService.predictWeight(history);
-            this.predictedWeight = predictedWeight;
-          })
         });
 
       } else {
