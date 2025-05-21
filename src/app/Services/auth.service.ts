@@ -150,15 +150,11 @@ export class AuthService {
     });
   }
 
-  addWeightToHistory(uid: string, weight: number): Promise<void> {
-    const weightEntry: WeightEntry = {
-      date: new Date(),
-      weight: weight
-    };
-    return this.firestore.collection('users').doc(uid).update({
-      weightHistory: firebase.firestore.FieldValue.arrayUnion(weightEntry)
-    });
-  }
+addWeightToHistory(uid: string, weightEntry: WeightEntry): Promise<void> {
+   return this.firestore.collection('users').doc(uid).update({
+   weightHistory: firebase.firestore.FieldValue.arrayUnion(weightEntry)
+   });
+   }
 
   updateUserProfileData(uid: string, data: any): Promise<void> {
     const weightEntry: WeightEntry = {

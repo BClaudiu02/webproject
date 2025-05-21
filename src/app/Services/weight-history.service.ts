@@ -10,13 +10,9 @@ export class WeightHistoryService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getWeightHistory(userId: string, months: number): Observable<WeightEntry[]> {
-    const startDate = new Date();
-    startDate.setMonth(startDate.getMonth() - months);
-
+  getWeightHistory(userId: string): Observable<WeightEntry[]> {
     return this.firestore.collection<WeightEntry>(`users/${userId}/weightHistory`, ref =>
-      ref.where('date', '>=', startDate)
-      .orderBy('date')
+      ref.orderBy('date')
     ).valueChanges();
   }
 }

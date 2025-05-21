@@ -4,6 +4,9 @@ import { AuthService } from '../services/auth.service';
 import { WeightHistoryService } from '../services/weight-history.service';
 import { WeightPredictionService } from '../services/weight-prediction.service';
 import { WeightEntry } from '../models/weight_entry.model';
+import { Chart, registerables } from 'chart.js';
+
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-weight-tracker',
@@ -14,7 +17,7 @@ export class WeightTrackerComponent implements OnInit {
 
   weightForm: FormGroup;
   weightHistory: WeightEntry[] = [];
-  userId!: string;
+  userId: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -22,7 +25,8 @@ export class WeightTrackerComponent implements OnInit {
     private weightHistoryService: WeightHistoryService
   ) {
     this.weightForm = this.fb.group({
-      weight: [null, [Validators.required, Validators.min(30), Validators.max(300)]]
+      weight: [null, [Validators.required, Validators.min(30), Validators.max(300)]],
+      date: [new Date(), Validators.required]
     });
   }
 
@@ -39,7 +43,7 @@ export class WeightTrackerComponent implements OnInit {
 
   loadWeightHistory(): void {
     if (this.userId) {
-      this.weightHistoryService.getWeightHistory(this.userId, 3).subscribe(history => {
+      this.weightHistoryService.getWeightHistory(this.userId).subscribe(history => {
         this.weightHistory = history;
       });
     }
@@ -50,8 +54,8 @@ export class WeightTrackerComponent implements OnInit {
       const weight = this.weightForm.value.weight;
 
       this.authService.addWeightToHistory(this.userId, weight).then(() => {
-        this.weightForm.reset();
-        this.loadWeightHistory(); // Refresh the weight history
+        this.weightForm.reset({ date: new Date()});
+        this.loadWeightHistory(); 
       });
     }
   }

@@ -3,8 +3,6 @@ import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserProfile } from '../models/user.model';
-import { WeightHistoryService } from '../services/weight-history.service';
-import { WeightPredictionService } from '../services/weight-prediction.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -24,8 +22,6 @@ export class UserProfileComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router,
-    private weightHistoryService: WeightHistoryService,
-    private weightPredictionService: WeightPredictionService
   ) {
     this.editForm = this.fb.group({
       displayName: [''],
