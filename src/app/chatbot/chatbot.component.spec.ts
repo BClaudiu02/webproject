@@ -8,7 +8,7 @@ describe('ChatbotComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChatbotComponent ]
+      declarations: [ChatbotComponent]
     })
       .compileComponents();
   });

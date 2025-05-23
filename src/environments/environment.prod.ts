@@ -1,4 +1,4 @@
 export const environment = {
-    production: true,
-    geminiApiKey: process.env['AIzaSyCKTm0'] || '' 
-  };
+  production: true,
+  geminiApiKey: process.env['AIzaSyCKTm0-jdfrZl'] || ''
+};

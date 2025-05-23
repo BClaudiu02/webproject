@@ -1,10 +1,10 @@
 export interface Article {
-    id: string; 
+    id: string;
     title: string;
     imageUrl: string;
-    contentSnippet: string; 
-    link: string; 
-    location: string;
-    sport: string; 
-    isAmateurCompetition: boolean; 
+    contentSnippet: string;
+    link: string;
+    location: string[];
+    sport: string;
+    isAmateurCompetition: boolean;
 }

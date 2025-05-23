@@ -64,7 +64,7 @@ export class ChatbotComponent implements OnInit {
     let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     formattedText = formattedText.replace(/\n/g, '<br>');
     formattedText = formattedText.replace(/<br>\*(?!\*)/g, '<br>-');
-    
+
     let listItems = formattedText.split('\n* ');
     if (listItems.length > 1) {
       let listHtml = '<ul>';

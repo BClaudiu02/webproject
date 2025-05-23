@@ -8,9 +8,9 @@ describe('FitnessTrackerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FitnessTrackerComponent ]
+      declarations: [FitnessTrackerComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FitnessTrackerComponent);
     component = fixture.componentInstance;

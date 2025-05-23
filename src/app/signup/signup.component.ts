@@ -27,11 +27,11 @@ export class SignupComponent implements OnInit {
     }
 
     signup() {
-        if (this.signupForm.invalid)                           
+        if (this.signupForm.invalid)
             return;
 
         this.authService.signupUser(this.signupForm.value).then((result) => {
-            if (result == null)                                 
+            if (result == null)
                 this.router.navigate(['/dashboard']);
             else if (result.isValid == false)
                 this.firebaseErrorMessage = result.message;

@@ -10,16 +10,18 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { AuthGuard } from './services/auth.guard';
 import { FitnessTrackerComponent } from './fitness-tracker/fitness-tracker.component';
+import { BmiCalculatorComponent } from './bmi-calculator/bmi-calculator.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'chatbot', component: ChatbotComponent, canActivate: [AuthGuard]},
+    { path: 'chatbot', component: ChatbotComponent, canActivate: [AuthGuard] },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
     { path: 'fitness-tracker', component: FitnessTrackerComponent, canActivate: [AuthGuard] },
+    { path: 'bmi-calculator', component: BmiCalculatorComponent, canActivate: [AuthGuard] },
     { path: '**', component: HomeComponent },
 ];
 

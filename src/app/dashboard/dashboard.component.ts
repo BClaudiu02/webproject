@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
     let filteredArticles = this.articles;
 
     if (this.selectedLocation) {
-      filteredArticles = filteredArticles.filter(article => article.location === this.selectedLocation);
+      filteredArticles = filteredArticles.filter(article => article.location.includes(this.selectedLocation));
     }
 
     if (this.selectedSport) {

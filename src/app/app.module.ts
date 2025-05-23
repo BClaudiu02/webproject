@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { firebaseConfig } from './config';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FitnessTrackerComponent } from './fitness-tracker/fitness-tracker.component';
+import { BmiCalculatorComponent } from './bmi-calculator/bmi-calculator.component';
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import { FitnessTrackerComponent } from './fitness-tracker/fitness-tracker.compo
         DashboardComponent,
         UserProfileComponent,
         FitnessTrackerComponent,
+        BmiCalculatorComponent,
     ],
     imports: [
         BrowserModule,

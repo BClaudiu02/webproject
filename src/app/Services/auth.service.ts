@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';  
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import firebase from 'firebase/compat/app';
@@ -42,7 +42,7 @@ export class AuthService {
             res.user?.updateProfile({ displayName: value.displayName })
               .then(() => {
                 this.createUserDocument(res.user)
-                  .then(() => resolve(null))  
+                  .then(() => resolve(null))
                   .catch(error => {
                     this.firebaseErrorMessage = error.message;
                     resolve({ isValid: false, message: error.message });

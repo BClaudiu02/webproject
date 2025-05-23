@@ -24,17 +24,17 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        
+
     }
 
     loginUser() {
         if (this.loginForm.invalid)
             return;
 
-        this.authService.loginUser(this.loginForm.value).then((result) => { 
-            if (result == null) {                               
+        this.authService.loginUser(this.loginForm.value).then((result) => {
+            if (result == null) {
                 console.log('logging in...');
-                this.router.navigate(['/dashboard']);                
+                this.router.navigate(['/dashboard']);
             }
             else if (result.isValid == false) {
                 console.log('login error', result);

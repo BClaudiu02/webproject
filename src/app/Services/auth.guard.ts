@@ -1,32 +1,25 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { map, take } from 'rxjs/operators'; import { from, Observable } from 'rxjs';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
-    constructor(private router: Router, private afAuth: AngularFireAuth) {
 
-    }
+export const AuthGuard: CanActivateFn = (route, state): Observable<boolean> => {
+  const afAuth = inject(AngularFireAuth);
+  const router = inject(Router);
 
-    canActivate(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  return from (afAuth.authState).pipe(
+        take(1),
+        map(user => {
+            if (user) {
+                return true;
+            } else {
+                console.log('Auth Guard: user is not logged in');
+                router.navigate(['/home'], { queryParams: { returnUrl: state.url } });
+                return false;
+      }
+    })
+  );
 
-        return new Promise((resolve, reject) => {
-            this.afAuth.onAuthStateChanged((user) => {
-                if (user) {
-                    resolve(true);
-                } else {
-                    console.log('Auth Guard: user is not logged in');
-                    this.router.navigate(['/home']);                   
-                    resolve(false);
-                }
-            });
-        });
-    }
-  
-}
+};

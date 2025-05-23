@@ -18,8 +18,8 @@ export class HomeComponent implements OnInit {
         "Success isn't always about greatness. It's about consistency. Consistent hard work leads to success. Greatness will come. - Dwayne Johnson",
         "The difference between the impossible and the possible lies in a person's determination. - Tommy Lasorda",
         "Champions aren't made in the gyms. Champions are made from something they have deep inside them—a desire, a dream, a vision. - Muhammad Ali"
-      ];
-      currentQuote: string = '';
+    ];
+    currentQuote: string = '';
 
     constructor(public afAuth: AngularFireAuth) { }
 
@@ -31,10 +31,10 @@ export class HomeComponent implements OnInit {
         const randomIndex = Math.floor(Math.random() * this.motivationalQuotes.length);
         console.log("Random Index:", randomIndex);
         this.currentQuote = this.motivationalQuotes[randomIndex];
-      }
+    }
 
     logout(): void {
         this.afAuth.signOut();
-    } 
+    }
 
 }

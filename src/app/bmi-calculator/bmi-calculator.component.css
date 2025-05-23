@@ -1,12 +1,4 @@
-.nav-buttons {
-  display: flex;
-  gap: 12px;
-  padding: 20px 16px 0;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.fitness-tracker {
+.bmi-calculator-container {
   max-width: 600px;
   margin: 40px auto;
   padding: 30px;
@@ -16,22 +8,22 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-.fitness-tracker h2,
-.fitness-tracker h3 {
+.bmi-calculator-container h2,
+.bmi-calculator-container h3 {
   text-align: center;
   color: #1976d2;
   margin-bottom: 20px;
 }
 
-.fitness-tracker label {
+.bmi-calculator-container label {
   display: block;
   margin-top: 15px;
   font-weight: 500;
   color: #333;
 }
 
-.fitness-tracker input,
-.fitness-tracker select {
+.bmi-calculator-container input[type="number"],
+.bmi-calculator-container select { 
   width: 100%;
   padding: 10px 12px;
   margin-top: 6px;
@@ -41,7 +33,7 @@
   box-sizing: border-box;
 }
 
-.fitness-tracker button {
+.bmi-calculator-container button {
   margin-top: 20px;
   width: 100%;
   padding: 12px;
@@ -54,11 +46,11 @@
   transition: background-color 0.3s ease;
 }
 
-.fitness-tracker button:hover {
+.bmi-calculator-container button:hover {
   background-color: #155fa0;
 }
 
-.fitness-tracker p {
+.bmi-calculator-container p {
   margin-top: 15px;
   font-weight: 500;
   font-size: 16px;
@@ -66,27 +58,17 @@
   text-align: center;
 }
 
-.fitness-tracker ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 20px;
-}
-
-.fitness-tracker li {
-  background-color: #fff;
-  border: 1px solid #ddd;
+.warning-message {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
   border-radius: 8px;
-  padding: 12px 16px;
-  margin-bottom: 10px;
+  padding: 10px;
+  margin-top: 20px;
   font-size: 14px;
-  color: #333;
+  text-align: left;
 }
 
-.fitness-tracker button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.activity-history {
-  margin-top: 30px;
+.warning-message strong {
+  font-weight: bold;
 }
