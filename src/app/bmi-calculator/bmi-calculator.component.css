@@ -1,3 +1,11 @@
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  padding: 20px 16px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .bmi-calculator-container {
   max-width: 600px;
   margin: 40px auto;
