@@ -10,7 +10,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { AuthGuard } from './services/auth.guard';
 import { FitnessTrackerComponent } from './fitness-tracker/fitness-tracker.component';
-import { WeightTrackerComponent } from './weight-tracker/weight-tracker.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,7 +20,6 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
     { path: 'fitness-tracker', component: FitnessTrackerComponent, canActivate: [AuthGuard] },
-    { path: 'weight-tracker', component: WeightTrackerComponent},
     { path: '**', component: HomeComponent },
 ];
 
