@@ -8,7 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
-import { AuthGuard } from './services/auth.guard';
+import { AuthGuard } from './Services/auth.guard';
 import { FitnessTrackerComponent } from './fitness-tracker/fitness-tracker.component';
 import { BmiCalculatorComponent } from './bmi-calculator/bmi-calculator.component';
 

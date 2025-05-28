@@ -5,4 +5,5 @@ export interface Activity {
   durationMinutes: number;
   caloriesBurned: number;
   date: Date;
+  weight: number;
 }

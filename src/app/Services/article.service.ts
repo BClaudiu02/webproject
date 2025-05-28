@@ -64,7 +64,7 @@ export class ArticleService {
       contentSnippet: 'Festivalul va avea loc în perioada 12-15 iunie',
       link: 'https://www.sportsfestival.com/',
       location: ['Cluj-Napoca'],
-      sport: 'Sport',
+      sport: 'Festival',
       isAmateurCompetition: true
     },
     {

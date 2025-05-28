@@ -63,18 +63,56 @@
   <p *ngIf="caloriesBurned">Calories Burned: {{ caloriesBurned | number: '1.0-2' }} kcal</p>
 
   <button (click)="saveActivity()" [disabled]="!caloriesBurned">Save Activity</button>
-
   <button (click)="clearHistory()" [disabled]="activities.length === 0">Clear History</button>
-
-  <div class="activity-history">
-    <h3>Activity History</h3>
-    <ul>
-      <li *ngFor="let activity of activities">
-        <strong>{{ activity.exercise }}</strong> -
-        {{ activity.durationMinutes }} min -
-        {{ activity.caloriesBurned | number: '1.0-2' }} kcal -
-        {{ activity.date | date: 'short' }}
-      </li>
-    </ul>
-  </div>
 </div>
+
+<div class="activity-history card">
+  <h3>Activity History</h3>
+  <ul class="activity-list">
+    <ng-container *ngFor="let activity of activities">
+      <li *ngIf="activity.exercise !== 'Manual Entry'">
+        <div class="activity-item">
+          <div class="activity-details">
+            <strong>{{ activity.exercise }}</strong>
+            <span>{{ activity.durationMinutes }} min</span>
+            <span>{{ activity.caloriesBurned | number: '1.0-2' }} kcal</span>
+          </div>
+          <div class="activity-date">
+            {{ activity.date | date: 'short' }}
+          </div>
+        </div>
+      </li>
+    </ng-container>
+  </ul>
+</div>
+
+<div class="manual-weight-entry card">
+  <h3>Manual Weight Entry</h3>
+
+  <div class="form-group">
+    <label for="manualWeight">Weight (kg):</label>
+    <input type="number" id="manualWeight" [(ngModel)]="manualWeight" name="manualWeight" />
+  </div>
+
+  <div class="form-group">
+    <label for="manualDate">Date:</label>
+    <input type="date" id="manualDate" [(ngModel)]="manualDate" name="manualDate" />
+  </div>
+
+  <button mat-raised-button color="primary" (click)="addManualWeightEntry()" [disabled]="!manualWeight || !manualDate">
+    Add Weight Entry
+  </button>
+</div>
+
+<div class="weight-graph-container">
+  <app-weight-graph [activities]="manualWeightEntries"></app-weight-graph>
+</div>
+
+<div style="max-width: 720px; margin: 10px auto 60px; text-align: center;">
+  <button mat-raised-button color="warn" (click)="clearManualWeightEntries()"
+    [disabled]="manualWeightEntries.length === 0">
+    Clear Weight Graph
+  </button>
+</div>
+
+<div class="graph-bottom-spacer"></div>

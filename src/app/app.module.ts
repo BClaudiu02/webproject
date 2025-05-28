@@ -33,7 +33,6 @@ import { BmiCalculatorComponent } from './bmi-calculator/bmi-calculator.componen
         LoginComponent,
         DashboardComponent,
         UserProfileComponent,
-        FitnessTrackerComponent,
         BmiCalculatorComponent,
     ],
     imports: [
@@ -41,6 +40,7 @@ import { BmiCalculatorComponent } from './bmi-calculator/bmi-calculator.componen
         HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        FitnessTrackerComponent,
 
         AngularFireModule.initializeApp(firebaseConfig.firebase),
         AngularFirestoreModule,

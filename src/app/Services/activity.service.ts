@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Activity } from '../models/activity.model';
 import { BehaviorSubject } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -9,6 +10,8 @@ export class ActivityService {
   private activities: Activity[] = [];
   private activitiesSubject = new BehaviorSubject<Activity[]>([]);
   private userId: string = '';
+  activitiesCollectionName = 'activities';
+  weightsCollectionName = 'weights';
 
   constructor() { }
 
@@ -47,6 +50,18 @@ export class ActivityService {
     this.activities = [];
     localStorage.removeItem(`activities_${this.userId}`);
     this.activitiesSubject.next([]);
+  }
+
+  deleteActivity(activity: Activity) {
+    this.activities = this.activities.filter(a => a.id !== activity.id);
+    this.saveActivities();
+    this.activitiesSubject.next(this.activities);
+  }
+
+  setActivities(activities: Activity[]) {
+    this.activities = activities;
+    this.saveActivities();
+    this.activitiesSubject.next(this.activities);
   }
 
   getExerciseLabel(exerciseKey: string): string {

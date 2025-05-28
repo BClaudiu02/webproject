@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GeminiService } from '../services/gemini.service';
+import { GeminiService } from '../Services/gemini.service';
 import { marked } from 'marked';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
