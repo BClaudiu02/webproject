@@ -11,7 +11,7 @@
   <div *ngIf="firebaseErrorMessage" class="error-message">{{ firebaseErrorMessage }}</div>
 
   <div *ngIf="user && !isEditing && userProfile">
-    <p *ngIf="userProfile.displayName"><strong>Display Name:</strong> {{ userProfile.displayName }}</p>
+    <p *ngIf="userProfile.displayName"><strong>Name:</strong> {{ userProfile.displayName }}</p>
     <p><strong>E-mail:</strong> {{ user.email }}</p>
     <p *ngIf="userProfile.gender"><strong>Gender:</strong> {{ userProfile.gender === 'masculin' ? 'Masculine' :
       userProfile.gender === 'feminin' ? 'Feminine' : 'Prefer not to say' }}</p>
